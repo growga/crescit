@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRESCIT | Gestión Estratégica para Clínicas Odontológicas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0A0A0A;
+      --bg-card: #121212;
+      --bg-card-hover: #171717;
+      --accent-gold: #C5A059;
+      --accent-gold-bright: #E5C17C;
+      --text-white: #FFFFFF;
+      --text-muted: #A0A0A0;
+      --text-dim: #666666;
+      --border-color: #222222;
+      --border-accent: #332815;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 18px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-svg {
+      height: 32px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-gold);
+    }
+
+    .btn-cta-nav {
+      background: linear-gradient(135deg, #C5A059 0%, #A37F3E 100%);
+      color: #000;
+      padding: 10px 22px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-cta-nav:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+    }
+
+    .hero {
+      padding: 180px 5% 100px 5%;
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at center, #1A1710 0%, #0A0A0A 75%);
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      color: var(--accent-gold);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      border: 1px solid var(--border-accent);
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(197, 160, 89, 0.05);
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 46px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      line-height: 1.2;
+      max-width: 950px;
+      margin-bottom: 25px;
+    }
+
+    .hero-title span {
+      color: var(--accent-gold);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-serif);
+      font-size: 25px;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin-bottom: 45px;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .pains-section {
+      padding: 100px 5%;
+      background-color: #0E0E0E;
+      border-y: 1px solid var(--border-color);
+    }
+
+    .section-header-center {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 60px auto;
+    }
+
+    .section-eyebrow {
+      color: var(--accent-gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .pains-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .pain-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 35px 25px;
+      border-radius: 4px;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .pain-card:hover {
+      border-color: #443315;
+      background-color: #151515;
+    }
+
+    .pain-icon {
+      font-size: 24px;
+      color: var(--accent-gold);
+      margin-bottom: 18px;
+      display: inline-block;
+    }
+
+    .pain-title {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-white);
+    }
+
+    .pain-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .philosophy-banner {
+      background: linear-gradient(180deg, #0E0E0E 0%, #14120C 50%, #0A0A0A 100%);
+      padding: 90px 5%;
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .philosophy-container {
+      max-width: 900px;
+      margin: 0 auto;
+      border-left: 3px solid var(--accent-gold);
+      padding-left: 30px;
+      text-align: left;
+    }
+
+    .philosophy-quote {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      color: var(--text-white);
+      line-height: 1.4;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .philosophy-sub {
+      color: var(--accent-gold);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .services-section {
+      padding: 100px 5%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 40px 30px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      background-color: var(--bg-card-hover);
+      border-color: var(--border-accent);
+    }
+
+    .service-num {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .service-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      color: var(--text-white);
+      text-transform: uppercase;
+      border-bottom: 1px solid #222;
+      padding-bottom: 12px;
+    }
+
+    .service-list {
+      list-style: none;
+    }
+
+    .service-item {
+      margin-bottom: 18px;
+    }
+
+    .service-item-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #E0E0E0;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .service-item-title::before {
+      content: '■';
+      color: var(--accent-gold);
+      font-size: 8px;
+    }
+
+    .service-item-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding-left: 16px;
+    }
+
+    .dooh-card {
+      grid-column: 1 / -1;
+      background: linear-gradient(180deg, #121212 0%, #171510 100%);
+      border: 1px solid var(--border-accent);
+    }
+
+    .dooh-badge {
+      display: inline-block;
+      background: rgba(197, 160, 89, 0.15);
+      color: var(--accent-gold);
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      border-radius: 2px;
+      margin-bottom: 15px;
+    }
+
+    .table-pauta {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 13px;
+    }
+
+    .table-pauta th {
+      background-color: #0A0A0A;
+      color: var(--accent-gold);
+      text-align: left;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      font-weight: 600;
+    }
+
+    .table-pauta td {
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+
+    .cta-section {
+      padding: 90px 5%;
+      background: radial-gradient(circle at center, #1C170E 0%, #0A0A0A 80%);
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .cta-box {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-family: var(--font-heading);
+      font-size: 30px;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .cta-desc {
+      color: var(--text-muted);
+      margin-bottom: 35px;
+      font-size: 16px;
+    }
+
+    .btn-whatsapp {
+      background-color: #25D366;
+      color: #000;
+      padding: 18px 38px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border-radius: 3px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.35);
+    }
+
+    footer {
+      padding: 40px 5%;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-dim);
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 32px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="brand-logo">
+      <svg class="logo-svg" viewBox="0 0 440 80" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="40" width="16" height="40" rx="2" fill="#444444"/>
+        <rect x="22" y="20" width="16" height="60" rx="2" fill="#8E8E93"/>
+        <rect x="44" y="0" width="16" height="80" rx="2" fill="#FFFFFF"/>
+        <text x="80" y="52" font-family="'Montserrat', sans-serif" font-weight="700" font-size="28" letter-spacing="6" fill="#FFFFFF">CRESCIT</text>
+        <line x1="80" y1="62" x2="420" y2="62" stroke="#2C2C2E" stroke-width="1.5"/>
+        <text x="80" y="74" font-family="'Inter', sans-serif" font-weight="500" font-size="9.5" letter-spacing="3.5" fill="#8E8E93">GROWTH &amp; OPERATIONS</text>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#diagnostico">Realidad Clínica</a></li>
+      <li><a href="#filosofia">El Enfoque</a></li>
+      <li><a href="#servicios">Soluciones</a></li>
+    </ul>
+    <a href="https://wa.me/595973255171" target="_blank" class="btn-cta-nav">Solicitar Evaluación</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Dirección &amp; Operaciones para Clínicas Odontológicas</div>
+    <h1 class="hero-title">Transforme su práctica médica en un <span>negocio rentable, estructurado y autónomo</span></h1>
+    <p class="hero-subtitle">Ayudamos a directores odontológicos a eliminar fugas de capital, sistematizar sus ventas y escalar su atracción de pacientes sin depender del esfuerzo continuo del fundador.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/595973255171" target="_blank" class="btn-cta-nav" style="padding: 16px 36px; font-size: 13px;">Agendar Diagnóstico Privado</a>
+    </div>
+  </section>
+
+  <section id="diagnostico" class="pains-section">
+    <div class="section-header-center">
+      <span class="section-eyebrow">La Realidad del Sector Odontológico Privado</span>
+      <h2 class="section-title">¿Su clínica padece alguno de estos síntomas operativos?</h2>
+      <p class="section-desc">Grandes profesionales de la salud suelen dirigir infraestructuras comerciales complejas sin las herramientas de control institucional adecuadas.</p>
+    </div>
+
+    <div class="pains-grid">
+      <div class="pain-card">
+        <span class="pain-icon">⚙️</span>
+        <h3 class="pain-title">Falta de Estructura &amp; Dependencia</h3>
+        <p class="pain-text">Si el odontólogo fundador no está en el sillón o en recepción, la operación se frena. La falta de manuales y procesos estandarizados genera cuellos de botella y desorden con el personal.</p>
+      </div>
+
+      <div class="pain-card">
+        <span class="pain-icon">📉</span>
+        <h3 class="pain-title">Cuentas por Cobrar &amp; Fugas de Capital</h3>
+        <p class="pain-text">Tratamientos iniciados sin plan de pago riguroso, presupuestos presentados sin seguimiento comercial directo y comisiones calculadas sobre ingresos brutos en lugar de márgenes netos.</p>
+      </div>
+
+      <div class="pain-card">
+        <span class="pain-icon">🔁</span>
+        <h3 class="pain-title">Ausencia de Posventa &amp; LTV Pérdido</h3>
+        <p class="pain-text">Los pacientes completan su tratamiento y se desconectan. No existen protocolos de mantenimiento periódico ni programas estructurados para captar su entorno familiar.</p>
+      </div>
+
+      <div class="pain-card">
+        <span class="pain-icon">📢</span>
+        <h3 class="pain-title">Publicidad Ineficiente sin Cierre</h3>
+        <p class="pain-text">Inversión continua en anuncios y redes sociales que atraen "consultas baratas", pero recepción no sabe convertirlos en citas confirmadas ni presupuestos cerrados en gabinete.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="filosofia" class="philosophy-banner">
+    <div class="philosophy-container">
+      <blockquote class="philosophy-quote">
+        "Encender la pauta publicitaria o lanzar campañas sin ordenar la casa solo acelera el desgaste. Primero blindamos la rentabilidad, los cobros y la experiencia operativa; luego, escalamos el flujo masivo de pacientes."
+      </blockquote>
+      <div class="philosophy-sub">Nuestra Metodología Integrada: Operations &amp; Growth</div>
+    </div>
+  </section>
+
+  <section id="servicios" class="services-section">
+    <div class="section-header-center" style="margin-bottom: 50px;">
+      <span class="section-eyebrow">Arquitectura de Soluciones CRESCIT</span>
+      <h2 class="section-title">Cómo intervendremos su estructura clínica</h2>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-num">FASE 01</span>
+        <h3 class="service-title">Auditoría Diagnóstica &amp; Dirección Estratégica</h3>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-title">Diagnóstico Directivo 360°</div>
+            <div class="service-item-desc">Auditoría de 28 KPIs para identificar dónde se pierde dinero diariamente en la clínica.</div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-title">Ingeniería de Costos (Costo Hora/Sillón)</div>
+            <div class="service-item-desc">Cálculo exacto del costo de infraestructura por hora para garantizar márgenes EBITDA reales.</div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-title">Cuadros de Mando (KPI Dashboards)</div>
+            <div class="service-item-desc">Tableros de control simplificados para monitorear el rendimiento sin estar presente.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">FASE 02</span>
+        <h3 class="service-title">Reingeniería Comercial &amp; Optimización de Ventas</h3>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-title">Modelos de Comisiones Eficientes</div>
+            <div class="service-item-desc">Esquemas de pago a profesionales calculados sobre el Margen Neto de Prestación real.</div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-title">Estandarización de Cierre en Gabinete</div>
+            <div class="service-item-desc">Entrenamiento comercial para elevar la aceptación de planes de tratamiento completos.</div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-title">Ingeniería de Flujo de Caja &amp; Cobros</div>
+            <div class="service-item-desc">Regla preventiva de 30 días y recuperación de cartera para eliminar la morosidad.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">FASE 03</span>
+        <h3 class="service-title">Gestión Operativa, RRHH &amp; Autonomía</h3>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-title">Optimización de Agenda &amp; Horas Hueco</div>
+            <div class="service-item-desc">Sistemas para erradicar sillones vacíos y gestionar ausencias de última hora.</div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-title">Auditoría de Insumos &amp; Laboratorios</div>
+            <div class="service-item-desc">Control directo sobre costos variables que erosionan el beneficio a fin de mes.</div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-title">Sistematización de Procesos (Matriz RACI)</div>
+            <div class="service-item-desc">Manuales operativos para que el equipo trabaje con autonomía sin supervisión constante.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">FASE 04</span>
+        <h3 class="service-title">Aceleración B2B &amp; Convenios Corporativos</h3>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-title">Diseño de Convenios Institucionales</div>
+            <div class="service-item-desc">Acuerdos marco con empresas y gremios locales para flujo predecible de colaboradores.</div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-title">Canalización Recurrente B2B</div>
+            <div class="service-item-desc">Captación masiva de pacientes cualificados reduciendo drásticamente el costo de adquisición.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">FASE 05</span>
+        <h3 class="service-title">Experiencia del Cliente &amp; Retención (LTV)</h3>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-title">Auditoría NPS de Satisfacción</div>
+            <div class="service-item-desc">Medición continua de la experiencia del paciente para convertirlo en promotor activo.</div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-title">Programas de Recurrencia &amp; Mantenimiento</div>
+            <div class="service-item-desc">Protocolos automatizados de recompra y profilaxis preventiva a largo plazo.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div id="dooh" class="service-card dooh-card">
+        <span class="dooh-badge">ALIANZA ESTRATÉGICA EXCLUSIVA</span>
+        <span class="service-num">FASE 06</span>
+        <h3 class="service-title">Estrategias de Visibilidad Exterior DOOH (con Grupo Innovar PY)</h3>
+        
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-title">Ubicaciones en Nodos de Alto Tráfico</div>
+            <div class="service-item-desc">
+              Presencia en vías neurálgicas para máximo impacto visual:
+              <br>• <strong>Av. Fernando de la Mora &amp; Médicos del Chaco:</strong> Pantalla Full HD de 32 m² (8 m x 4 m).
+              <br>• <strong>Intersección Lambaré (Defensores del Chaco &amp; San Isidro):</strong> Pantalla Doble Faz (5 m x 3 m por lado).
+              <br>• <strong>Eusebio Lillo Robles:</strong> Pantalla vertical urbana para perfil de alto consumo.
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-title">Atracción Integrada (O2O - Offline to Online)</div>
+            <div class="service-item-desc">Diseños dinámicos con códigos QR y landings sincronizados directamente con la recepción de la clínica para medir el retorno exacto de la inversión.</div>
+          </li>
+        </ul>
+
+        <div style="margin-top: 25px;">
+          <div style="font-size: 13px; font-weight: 700; color: var(--accent-gold); margin-bottom: 10px; text-transform: uppercase;">Planes de Pauta a Medida (Spots de 10 segundos):</div>
+          <table class="table-pauta">
+            <thead>
+              <tr>
+                <th>PLAN</th>
+                <th>FRECUENCIA DIARIA</th>
+                <th>REPRODUCCIONES MENSUALES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Plan Básico</strong></td>
+                <td>300 reprod./día</td>
+                <td>9.000 mensuales</td>
+              </tr>
+              <tr>
+                <td><strong>Plan Pro</strong></td>
+                <td>600 reprod./día</td>
+                <td>18.000 mensuales</td>
+              </tr>
+              <tr>
+                <td><strong>Plan Premium</strong></td>
+                <td>900 reprod./día</td>
+                <td>27.000 mensuales</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-box">
+      <h2 class="cta-title">Tome el control operativo y financiero de su clínica</h2>
+      <p class="cta-desc">Hable directamente con nuestro equipo directivo para realizar un diagnóstico situacional sin compromiso y estructurar un plan de crecimiento.</p>
+      <a href="https://wa.me/595973255171" target="_blank" class="btn-whatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Agendar Consulta vía WhatsApp (+595 973 255171)
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <strong>CRESCIT</strong> | Growth &amp; Operations Consulting © 2026. Todos los derechos reservados.
+    </div>
+    <div>
+      Contacto Directo: +595 973 255171 | Paraguay
+    </div>
+  </footer>
+
+</body>
+</html>
